@@ -12,7 +12,7 @@ function onSearchSubmit() {
   const query = movieStore.searchQuery.trim()
 
   if (!query) {
-    searchErrorText.value = "Введите название фильма"
+    searchErrorText.value = "Please enter a valid movie-name"
     return
   }
 
