@@ -1,0 +1,209 @@
+.header-bar {
+  padding: 14px 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.header-bar__container {
+  max-width: var(--page-max-width);
+  margin: 0 auto;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  box-shadow: var(--shadow-soft);
+  display: grid;
+  grid-template-columns: auto auto minmax(260px, 1fr);
+  align-items: center;
+  gap: 16px;
+  padding: 12px 14px;
+}
+
+.header-bar__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  color: var(--text-main);
+}
+
+.header-bar__brand-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #f6fffd;
+  background:
+    linear-gradient(145deg, var(--brand-main), var(--brand-main-strong));
+  box-shadow: 0 10px 20px -14px rgba(8, 91, 86, 0.9);
+}
+
+.header-bar__brand-text {
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.header-bar__nav {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 4px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--line-soft);
+}
+
+.header-bar__nav-link {
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 999px;
+  transition: color 220ms ease, background-color 220ms ease, transform 220ms ease;
+}
+
+.header-bar__nav-link:hover {
+  color: var(--text-main);
+  background: rgba(11, 118, 111, 0.08);
+  transform: translateY(-1px);
+}
+
+.header-bar__nav-link--active {
+  color: #f6fffd;
+  background: linear-gradient(140deg, var(--brand-main), var(--brand-main-strong));
+  box-shadow: 0 12px 18px -16px rgba(8, 91, 86, 0.85);
+}
+
+.header-bar__search {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(120px, 1fr) auto;
+  gap: 8px;
+}
+
+.header-bar__search-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.header-bar__search-input {
+  min-width: 0;
+  width: 100%;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--line-soft);
+  background: #ffffff;
+  color: var(--text-main);
+  padding: 0 14px;
+  transition: border-color 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+}
+
+.header-bar__search-input::placeholder {
+  color: var(--text-quiet);
+}
+
+.header-bar__search-input:focus {
+  border-color: rgba(11, 118, 111, 0.52);
+  box-shadow: 0 0 0 4px rgba(11, 118, 111, 0.1);
+  background: #ffffff;
+  outline: none;
+}
+
+.header-bar__search-input--error {
+  border-color: rgba(220, 38, 38, 0.55);
+  box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.12);
+}
+
+.header-bar__search-button {
+  height: 42px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fffaf3;
+  cursor: pointer;
+  background: linear-gradient(140deg, var(--accent-main), #b45309);
+  box-shadow: 0 10px 22px -15px rgba(180, 83, 9, 0.95);
+  transition: transform 220ms ease, filter 220ms ease;
+}
+
+.header-bar__search-button:hover {
+  transform: translateY(-1px);
+  filter: saturate(1.08);
+}
+
+.header-bar__search-button:active {
+  transform: translateY(0);
+}
+
+.header-bar__search-error {
+  margin: -2px 0 0;
+  grid-column: 1 / -1;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--danger-main);
+}
+
+@media (max-width: 980px) {
+  .header-bar__container {
+    grid-template-columns: auto 1fr;
+    grid-template-areas:
+      "brand nav"
+      "search search";
+  }
+
+  .header-bar__brand {
+    grid-area: brand;
+  }
+
+  .header-bar__nav {
+    grid-area: nav;
+    justify-self: end;
+  }
+
+  .header-bar__search {
+    grid-area: search;
+  }
+}
+
+@media (max-width: 680px) {
+  .header-bar {
+    padding: 10px 12px 0;
+  }
+
+  .header-bar__container {
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .header-bar__brand-text {
+    font-size: 18px;
+  }
+
+  .header-bar__nav {
+    justify-self: stretch;
+    justify-content: center;
+  }
+
+  .header-bar__search {
+    grid-template-columns: 1fr;
+  }
+
+  .header-bar__search-button {
+    width: 100%;
+  }
+}
